@@ -13,6 +13,7 @@
 <mat-card>
   <h2>List of Users</h2>
   <ng-container *ngFor="let user of users">
-    {{ user.name }} - {{ user.job }}<br />
+    {{ user.name }} <br />
+    <a [href]="user.url" target="_blank">Connect With {{ user.name }}</a>
   </ng-container>
 </mat-card>

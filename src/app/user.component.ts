@@ -15,8 +15,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   ],
 })
 export class UserComponent {
-  user: User;
-  users: User[] = [];
+  user: any;
+  users: Array<any> = [];
 
   usersTyped: UserInfo[] = [];
 
@@ -44,7 +44,10 @@ export class UserComponent {
       .subscribe((response: any) => {
         console.log(response);
 
-        this.users.push({ name: response.name, job: response.job });
+        this.users.push({
+          name: response.persons[0].firstName,
+          url: response.persons[0].linkedInUrl,
+        });
       });
   }
 
