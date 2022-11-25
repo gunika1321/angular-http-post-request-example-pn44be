@@ -20,6 +20,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class UserComponent {
   user: any;
   users: Array<any> = [];
+  companyProfile: '';
   showNoUser: boolean = false;
   usersTyped: UserInfo[] = [];
   displayedColumns: string[] = ['image', 'url'];
@@ -53,6 +54,7 @@ export class UserComponent {
             name: response.persons[0].displayName,
             url: response.persons[0].linkedInUrl,
             photo: response.persons[0].photoUrl,
+            headline: response.persons[0].headline,
           });
           this.userService
             .searchTwitter(response.persons[0].companyName)
@@ -61,26 +63,14 @@ export class UserComponent {
             });
         } else {
           this.showNoUser = true;
+          this.companyProfile =
+            'https://www.whois.com/whois/' +
+            this.addUserForm.value.name.split('@')[1];
         }
       });
   }
-
-  saveUserTyped() {
-    this.user = this.addUserForm.value;
-    this.userService
-      .saveUserTyped(this.user)
-      .subscribe((response: UserInfo) => {
-        console.log(response);
-
-        this.users.push({ name: response.name, job: response.job });
-        this.usersTyped.push({
-          name: response.name,
-          job: response.job,
-          id: response.id,
-          createdAt: response.createdAt,
-        });
-      });
+  openLinkedIn(user) {
+    window.open(user.url);
   }
-
   ngOnInit(): void {}
 }
