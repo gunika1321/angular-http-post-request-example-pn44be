@@ -3,6 +3,7 @@ import { User, UserInfo } from './user';
 import { UserService } from './user.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PhoneNumberUtil } from 'google-libphonenumber';
+
 @Component({
   selector: 'user',
   templateUrl: './user.component.html',
@@ -15,6 +16,7 @@ export class UserComponent {
   twitterProfile: String = '';
   mailLink: String = '';
   whatsappLink: String = '';
+  showSpinner: boolean = false;
   crunchbaseProfile: String = '';
   showNoUser: boolean = false;
   showResult: boolean = false;
@@ -28,7 +30,7 @@ export class UserComponent {
   constructor(public userService: UserService) {}
 
   saveUser() {
-    this.showResult = true;
+    this.showSpinner = true;
     if (this.addUserForm.value.phone.length >= 10) {
       this.whatsappLink = `https://wa.me/${this.addUserForm.value.phone}`;
     } else {
@@ -51,6 +53,7 @@ export class UserComponent {
       this.userService
         .saveUser(headers, this.user.name)
         .subscribe((response: any) => {
+          // this.showSpinner = false;
           console.log(response);
           if (response.resultTemplate == 'ExactMatch') {
             this.showNoUser = false;
@@ -80,6 +83,7 @@ export class UserComponent {
           }
         });
     }
+    // this.showSpinner = false;
   }
   openLinkedIn(user) {
     window.open(user.url);
