@@ -214,51 +214,50 @@
       </mat-card>
     </div>
   </ng-container>
-  <!-- <mat-card
-    *ngIf="whatsappLink"
-    style="display: flex;
+  <ng-container>
+    <mat-card
+      class="w-40"
+      *ngIf="whatsappLink"
+      style="display: flex;
     flex-direction: column;
     margin: auto;
-    width: 522px;
     height: 31px;
     top: 0px;"
-  >
-    <div
-      style="display: flex;
+    >
+      <div
+        style="display: flex;
       flex-direction: row;
       justify-content: space-between;
       top: -4px;
       position: absolute;
       width: 525px;"
-    >
-      <a
-        style="text-decoration:none;color:#000;"
-        [href]="whatsappLink"
-        target="_blank"
-        ><img
-          height="70"
-          src="https://cdn2.downdetector.com/static/uploads/logo/WhatsApp-Emblem.png"
-          alt="whatsapp"
-      /></a>
-      <a
-        style="display: flex;
+      >
+        <a
+          style="text-decoration:none;color:#000;"
+          [href]="whatsappLink"
+          target="_blank"
+          ><img
+            height="70"
+            src="https://cdn2.downdetector.com/static/uploads/logo/WhatsApp-Emblem.png"
+            alt="whatsapp"
+        /></a>
+        <a
+          style="display: flex;
         flex-direction: inherit;
         justify-content: center;
         align-items: center;
         height: 41px;
         position: absolute;
         top: 15px;
-        right: 0px;"
-        [href]="whatsappLink"
-        target="_blank"
-        mat-raised-button
-        >Go To</a
-      >
-    </div>
-  </mat-card> -->
+    right: -34px;"
+          [href]="whatsappLink"
+          target="_blank"
+          mat-raised-button
+          >Go To</a
+        >
+      </div>
+    </mat-card></ng-container
+  >
 </mat-card>
 
-<mat-spinner
-  style="margin:auto;"
-  *ngIf="showSpinner && !showResult"
-></mat-spinner>
+<mat-spinner style="margin:auto;" *ngIf="showSpinner"></mat-spinner>

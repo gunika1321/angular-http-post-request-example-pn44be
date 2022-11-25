@@ -30,12 +30,11 @@ export class UserComponent {
   constructor(public userService: UserService) {}
 
   saveUser() {
-    this.showSpinner = true;
-    if (this.addUserForm.value.phone.length >= 10) {
-      this.whatsappLink = `https://wa.me/${this.addUserForm.value.phone}`;
-    } else {
-      this.whatsappLink = ``;
+    if (!this.addUserForm.value.phone) {
+      this.whatsappLink = '';
     }
+    this.showSpinner = true;
+    this.showResult = false;
     this.users = [];
     this.user = this.addUserForm.value;
     let headers = {
@@ -53,7 +52,11 @@ export class UserComponent {
       this.userService
         .saveUser(headers, this.user.name)
         .subscribe((response: any) => {
-          // this.showSpinner = false;
+          this.showResult = true;
+          this.showSpinner = false;
+          if (this.addUserForm.value.phone) {
+            this.whatsappLink = `https://wa.me/${this.addUserForm.value.phone}`;
+          }
           console.log(response);
           if (response.resultTemplate == 'ExactMatch') {
             this.showNoUser = false;
@@ -64,24 +67,30 @@ export class UserComponent {
               headline: response.persons[0].headline,
             });
 
-            this.companyProfile = `https://www.whois.com/whois/${response.persons[0].companyName}`;
+            this.companyProfile = `https://www.whois.com/whois/${response.persons[0].companyName.toLowerCase()}`;
             this.twitterProfile = `https://twitter.com/search?q=${response.persons[0].companyName}`;
             this.mailLink = `mailto:${this.addUserForm.value.name}`;
-            this.crunchbaseProfile = `https://www.crunchbase.com/organization/${response.persons[0].companyName}`;
+            this.crunchbaseProfile = `https://www.crunchbase.com/organization/${response.persons[0].companyName.toLowerCase()}`;
           } else {
             this.showNoUser = true;
-            this.companyProfile = `https://www.whois.com/whois/${
-              this.addUserForm.value.name.split('@')[1]
-            }`;
+            this.companyProfile = `https://www.whois.com/whois/${this.addUserForm.value.name
+              .split('@')[1]
+              .split('.')[0]
+              .toLowerCase()}`;
             this.twitterProfile = `https://twitter.com/search?q=${
               this.addUserForm.value.name.split('@')[1].split('.')[0]
             }`;
             this.mailLink = `mailto:${this.addUserForm.value.name}`;
-            this.crunchbaseProfile = `https://www.crunchbase.com/organization/${
-              this.addUserForm.value.name.split('@')[1].split('.')[0]
-            }`;
+            this.crunchbaseProfile = `https://www.crunchbase.com/organization/${this.addUserForm.value.name
+              .split('@')[1]
+              .split('.')[0]
+              .toLowerCase()}`;
           }
         });
+    } else if (this.addUserForm.value.phone) {
+      this.showResult = true;
+      this.whatsappLink = `https://wa.me/${this.addUserForm.value.phone}`;
+      this.showSpinner = false;
     }
     // this.showSpinner = false;
   }
