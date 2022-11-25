@@ -15,17 +15,37 @@
   <br />
   <ng-container *ngFor="let user of users">
     <div
-      style="flex-direction: row;
+      style='flex-direction: row;
       display: flex;
-      justify-content: center;
-      align-items: center;"
+      align-items: center;
+      background-color: rgb(40, 62, 74);
+      color: #fff;
+      font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+      height: 200px;'
     >
-      <img
-        style="border-radius:50%;height:50px;"
-        [src]="user.photo"
-        [alt]="user.name"
-      />
-      <p>{{ user.name }}</p>
+      <div style="margin-left:50px;">
+        <img
+          style="border-radius:50%;height:120px;margin-left:2%;"
+          [src]="user.photo"
+          [alt]="user.name"
+        />
+      </div>
+      <div
+        style="background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiNmZmYiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzExNzdiMyIgZD0iTTEuOCAwQTEuOCAxLjggMCAwIDAgMCAxLjd2MjAuNkExLjggMS44IDAgMCAwIDEuOCAyNGgyMC40YTEuOCAxLjggMCAwIDAgMS44LTEuN1YxLjdBMS44IDEuOCAwIDAgMCAyMi4yIDB6Ii8+PHBhdGggZD0iTTIwLjQgMjAuNEgxN1YxNWMwLTEuNSAwLTMtMS44LTMtMiAwLTIgMS4zLTIgM3Y1LjRIOS40VjloMy40djEuN2EzLjcgMy43IDAgMCAxIDMuNi0yYzMuNCAwIDQgMi40IDQgNS41ek0zLjQgOUg3djExLjRIMy42eiIvPjxjaXJjbGUgY3g9IjUuNCIgY3k9IjUuNCIgcj0iMi4xIi8+PC9zdmc+);
+        position: absolute;
+        z-index: 10;
+        right: -1px;
+        bottom: 2px;
+        border-style: solid;
+        border-color: rgb(40, 62, 74);
+        border-width: 2px;
+        border-radius: 15%;
+        width: 28px;
+        height: 28px;
+        left: 153px;
+        top: 210px;"
+      ></div>
+      <p style="font-size:40px;">{{ user.name }}</p>
       <!-- <a [href]="user.url" target="_blank">
         <img
           src="https://cdn.iconscout.com/icon/free/png-256/linkedin-160-461814.png"
@@ -36,8 +56,8 @@
           width="40"
           height="40"
       /></a> -->
-      <table mat-table [dataSource]="user" class="mat-elevation-z8">
-        <!-- Name Column -->
+      <!-- <table mat-table [dataSource]="user" class="mat-elevation-z8">
+
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>LinkedIn</th>
           <td mat-cell *matCellDef="let element">
@@ -45,13 +65,13 @@
           </td>
         </ng-container>
 
-        <!-- Weight Column -->
+
         <ng-container matColumnDef="weight">
           <th mat-header-cell *matHeaderCellDef>Email</th>
           <td mat-cell *matCellDef="let element">Open</td>
         </ng-container>
 
-        <!-- Symbol Column -->
+
         <ng-container matColumnDef="symbol">
           <th mat-header-cell *matHeaderCellDef>Symbol</th>
           <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
@@ -59,7 +79,7 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
+      </table> -->
     </div>
   </ng-container>
   <ng-container *ngIf="showNoUser"> No users found :( </ng-container>
