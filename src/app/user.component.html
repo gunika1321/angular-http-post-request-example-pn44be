@@ -19,7 +19,8 @@
   <br />
   <ng-container *ngFor="let user of users">
     <div
-      style='flex-direction: row;
+      (click)="openLinkedIn(user)"
+      style='cursor:pointer;flex-direction: row;
       display: flex;
       align-items: center;
       background-color: rgb(40, 62, 74);
@@ -73,9 +74,8 @@
           {{ user.headline }}
         </p>
       </div>
-      <button
+      <!-- <button
         style="position: relative;
-      right: -279px;
       cursor:pointer;
       background-color: rgb(0, 120, 212);
       border: 0px;
@@ -83,11 +83,13 @@
       height: 31px;
       color: #fff;
       border-radius: 7%;
-      width: 84px;"
+      width: 132px;
+      right: 224px;
+    top: 100px;"
         (click)="openLinkedIn(user)"
       >
-        Connect
-      </button>
+        View on LinkedIn
+      </button> -->
     </div>
     <div
       style="display:flex;flex-direction:column;margin: auto;
