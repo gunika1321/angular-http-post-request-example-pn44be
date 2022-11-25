@@ -1,0 +1,57 @@
+.main {
+  cursor: pointer;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  background-color: rgb(40, 62, 74);
+  color: #fff;
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI',
+    -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+  height: 200px;
+  width: 1000px;
+  margin: auto;
+}
+
+.linked-in {
+  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiNmZmYiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzExNzdiMyIgZD0iTTEuOCAwQTEuOCAxLjggMCAwIDAgMCAxLjd2MjAuNkExLjggMS44IDAgMCAwIDEuOCAyNGgyMC40YTEuOCAxLjggMCAwIDAgMS44LTEuN1YxLjdBMS44IDEuOCAwIDAgMCAyMi4yIDB6Ii8+PHBhdGggZD0iTTIwLjQgMjAuNEgxN1YxNWMwLTEuNSAwLTMtMS44LTMtMiAwLTIgMS4zLTIgM3Y1LjRIOS40VjloMy40djEuN2EzLjcgMy43IDAgMCAxIDMuNi0yYzMuNCAwIDQgMi40IDQgNS41ek0zLjQgOUg3djExLjRIMy42eiIvPjxjaXJjbGUgY3g9IjUuNCIgY3k9IjUuNCIgcj0iMi4xIi8+PC9zdmc+);
+  position: absolute;
+  z-index: 10;
+  right: -1px;
+  bottom: 2px;
+  border-style: solid;
+  border-color: rgb(40, 62, 74);
+  border-width: 2px;
+  border-radius: 15%;
+  width: 28px;
+  height: 28px;
+  left: 351px;
+  top: 157px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  font-family: monospace;
+  align-items: center;
+  color: #16449b;
+}
+
+.loader {
+  position: absolute;
+  margin: auto;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #16449b; /* Blue */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

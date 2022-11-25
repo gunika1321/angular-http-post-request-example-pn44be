@@ -1,6 +1,13 @@
 <mat-card>
-  <h2>Enter Email</h2>
-  <form [formGroup]="addUserForm" (ngSubmit)="saveUser()">
+  <div class="flex">
+    <a href="https://hippochat.io/"
+      ><img
+        height="40"
+        src="https://hippochat.io/en/assets/images/fugudesk.png"
+    /></a>
+    <h2>Hippo Profiler</h2>
+  </div>
+  <form class="flex" [formGroup]="addUserForm" (ngSubmit)="saveUser()">
     <mat-form-field style="width:400px;">
       <input matInput placeholder="Email" formControlName="name" />
     </mat-form-field>
@@ -15,20 +22,9 @@
   </form>
 </mat-card>
 <mat-card>
-  <h2>Profiles</h2>
   <br />
   <ng-container *ngFor="let user of users">
-    <div
-      (click)="openLinkedIn(user)"
-      style='cursor:pointer;flex-direction: row;
-      display: flex;
-      align-items: center;
-      background-color: rgb(40, 62, 74);
-      color: #fff;
-      font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-      height: 200px;width: 1000px;
-    margin: auto;'
-    >
+    <div (click)="openLinkedIn(user)" class="main">
       <div style="margin-left:50px;">
         <img
           style="border-radius:50%;height:120px;margin-left:2%;"
@@ -36,21 +32,7 @@
           [alt]="user.name"
         />
       </div>
-      <div
-        style="background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiNmZmYiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzExNzdiMyIgZD0iTTEuOCAwQTEuOCAxLjggMCAwIDAgMCAxLjd2MjAuNkExLjggMS44IDAgMCAwIDEuOCAyNGgyMC40YTEuOCAxLjggMCAwIDAgMS44LTEuN1YxLjdBMS44IDEuOCAwIDAgMCAyMi4yIDB6Ii8+PHBhdGggZD0iTTIwLjQgMjAuNEgxN1YxNWMwLTEuNSAwLTMtMS44LTMtMiAwLTIgMS4zLTIgM3Y1LjRIOS40VjloMy40djEuN2EzLjcgMy43IDAgMCAxIDMuNi0yYzMuNCAwIDQgMi40IDQgNS41ek0zLjQgOUg3djExLjRIMy42eiIvPjxjaXJjbGUgY3g9IjUuNCIgY3k9IjUuNCIgcj0iMi4xIi8+PC9zdmc+);
-        position: absolute;
-        z-index: 10;
-        right: -1px;
-        bottom: 2px;
-        border-style: solid;
-        border-color: rgb(40, 62, 74);
-        border-width: 2px;
-        border-radius: 15%;
-        width: 28px;
-        height: 28px;
-        left: 351px;
-        top: 210px;"
-      ></div>
+      <div class="linked-in"></div>
       <div style="display:flex;flex-direction:column;">
         <p
           style="font-size: 34px;
@@ -183,9 +165,43 @@
           >
         </div>
       </mat-card>
+      <mat-card>
+        <div
+          style="display: flex;
+      flex-direction: row;
+      justify-content: space-between;"
+        >
+          <a
+            style="text-decoration:none;color:#000;"
+            [href]="crunchbaseProfile"
+            target="_blank"
+            ><img
+              height="32"
+              style="background-color: #0f66ff;"
+              src="http://cbxmarketing.wpenginepowered.com/wp-content/uploads/2019/08/logo_crunchbase.svg"
+              alt="whois.com"
+          /></a>
+          <a
+            style="display: flex;
+        flex-direction: inherit;
+        justify-content: center;
+        align-items: center;"
+            [href]="crunchbaseProfile"
+            target="_blank"
+            mat-raised-button
+            >Go To</a
+          >
+        </div>
+      </mat-card>
     </div>
   </ng-container>
   <ng-container *ngIf="showNoUser">
+    <p
+      style="display:flex;flex-direction:column;margin: auto;
+    width: 40%;color:#16449b;font-family:monospace;"
+    >
+      No LinkedIn profile found for this email
+    </p>
     <div
       style="display:flex;flex-direction:column;margin: auto;
     width: 40%;"
@@ -233,7 +249,6 @@
               data-test="music-service-item-image"
               src="https://services.linkfire.com/logo_twitter_onlight.svg"
               alt="Twitter"
-              longdesc="https://twitter.com/iSidhuMooseWala"
           /></a>
           <a
             style="display: flex;
@@ -278,9 +293,37 @@
           >
         </div>
       </mat-card>
+      <mat-card>
+        <div
+          style="display: flex;
+    flex-direction: row;
+    justify-content: space-between;"
+        >
+          <a
+            style="text-decoration:none;color:#000;"
+            [href]="crunchbaseProfile"
+            target="_blank"
+            ><img
+              height="32"
+              style="background-color: #0f66ff;"
+              src="http://cbxmarketing.wpenginepowered.com/wp-content/uploads/2019/08/logo_crunchbase.svg"
+              alt="whois.com"
+          /></a>
+          <a
+            style="display: flex;
+      flex-direction: inherit;
+      justify-content: center;
+      align-items: center;"
+            [href]="crunchbaseProfile"
+            target="_blank"
+            mat-raised-button
+            >Go To</a
+          >
+        </div>
+      </mat-card>
     </div>
   </ng-container>
-  <mat-card
+  <!-- <mat-card
     *ngIf="whatsappLink"
     style="display: flex;
     flex-direction: column;
@@ -320,6 +363,6 @@
         mat-raised-button
         >Go To</a
       >
-    </div></mat-card
-  >
+    </div>
+  </mat-card> -->
 </mat-card>

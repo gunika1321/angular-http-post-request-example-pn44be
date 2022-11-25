@@ -6,16 +6,7 @@ import { PhoneNumberUtil } from 'google-libphonenumber';
 @Component({
   selector: 'user',
   templateUrl: './user.component.html',
-  styles: [
-    `
-      h1 {
-        font-family: Lato;
-      }
-      table{
-        width:100%;
-      }
-    `,
-  ],
+  styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
   user: any;
@@ -24,6 +15,7 @@ export class UserComponent {
   twitterProfile: String = '';
   mailLink: String = '';
   whatsappLink: String = '';
+  crunchbaseProfile: String = '';
   showNoUser: boolean = false;
   usersTyped: UserInfo[] = [];
   displayedColumns: string[] = ['image', 'url'];
@@ -67,9 +59,10 @@ export class UserComponent {
               headline: response.persons[0].headline,
             });
 
-            this.companyProfile = `https://www.whois.com/whois/${response.persons[0].companyName}.com`;
+            this.companyProfile = `https://www.whois.com/whois/${response.persons[0].companyName}`;
             this.twitterProfile = `https://twitter.com/search?q=${response.persons[0].companyName}`;
             this.mailLink = `mailto:${this.addUserForm.value.name}`;
+            this.crunchbaseProfile = `https://www.crunchbase.com/organization/${response.persons[0].companyName}`;
           } else {
             this.showNoUser = true;
             this.companyProfile = `https://www.whois.com/whois/${
@@ -79,6 +72,9 @@ export class UserComponent {
               this.addUserForm.value.name.split('@')[1].split('.')[0]
             }`;
             this.mailLink = `mailto:${this.addUserForm.value.name}`;
+            this.crunchbaseProfile = `https://www.crunchbase.com/organization/${
+              this.addUserForm.value.name.split('@')[1].split('.')[0]
+            }`;
           }
         });
     }
