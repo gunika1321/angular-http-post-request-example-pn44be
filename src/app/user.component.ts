@@ -66,11 +66,10 @@ export class UserComponent {
               photo: response.persons[0].photoUrl,
               headline: response.persons[0].headline,
             });
-            this.userService
-              .searchTwitter(response.persons[0].companyName)
-              .subscribe((response: any) => {
-                console.log(response);
-              });
+
+            this.companyProfile = `https://www.whois.com/whois/${response.persons[0].companyName}.com`;
+            this.twitterProfile = `https://twitter.com/search?q=${response.persons[0].companyName}`;
+            this.mailLink = `mailto:${this.addUserForm.value.name}`;
           } else {
             this.showNoUser = true;
             this.companyProfile = `https://www.whois.com/whois/${
