@@ -29,4 +29,8 @@ export class UserService {
     const url = 'https://reqres.in/api/users';
     return this.http.post<UserInfo>(url, user);
   }
+
+  public searchTwitter(company:String){
+    return this.http.get(`https://twitter.com/search?q=${company}`)
+  }
 }

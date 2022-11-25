@@ -11,15 +11,18 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
       h1 {
         font-family: Lato;
       }
+      table{
+        width:100%;
+      }
     `,
   ],
 })
 export class UserComponent {
   user: any;
   users: Array<any> = [];
-
+  showNoUser: boolean = false;
   usersTyped: UserInfo[] = [];
-
+  displayedColumns: string[] = ['image', 'url'];
   addUserForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
   });
@@ -27,6 +30,7 @@ export class UserComponent {
   constructor(public userService: UserService) {}
 
   saveUser() {
+    this.users = [];
     this.user = this.addUserForm.value;
     let headers = {
       Accept: 'text/plain,application/json, text/json',
@@ -43,11 +47,21 @@ export class UserComponent {
       .saveUser(headers, this.user.name)
       .subscribe((response: any) => {
         console.log(response);
-
-        this.users.push({
-          name: response.persons[0].firstName,
-          url: response.persons[0].linkedInUrl,
-        });
+        if (response.resultTemplate == 'ExactMatch') {
+          this.showNoUser = false;
+          this.users.push({
+            name: response.persons[0].displayName,
+            url: response.persons[0].linkedInUrl,
+            photo: response.persons[0].photoUrl,
+          });
+          this.userService
+            .searchTwitter(response.persons[0].companyName)
+            .subscribe((response: any) => {
+              console.log(response);
+            });
+        } else {
+          this.showNoUser = true;
+        }
       });
   }
 

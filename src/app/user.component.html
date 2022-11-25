@@ -2,7 +2,7 @@
   <h2>Enter Email</h2>
   <form [formGroup]="addUserForm" (ngSubmit)="saveUser()">
     <mat-form-field>
-      <input matInput placeholder="Name" formControlName="name" />
+      <input matInput placeholder="Email" formControlName="name" />
     </mat-form-field>
     <br />
     <button [disabled]="!addUserForm.valid" mat-raised-button type="submit">
@@ -11,9 +11,56 @@
   </form>
 </mat-card>
 <mat-card>
-  <h2>List of Users</h2>
+  <h2>Profiles</h2>
+  <br />
   <ng-container *ngFor="let user of users">
-    {{ user.name }} <br />
-    <a [href]="user.url" target="_blank">Connect With {{ user.name }}</a>
+    <div
+      style="flex-direction: row;
+      display: flex;
+      justify-content: center;
+      align-items: center;"
+    >
+      <img
+        style="border-radius:50%;height:50px;"
+        [src]="user.photo"
+        [alt]="user.name"
+      />
+      <p>{{ user.name }}</p>
+      <!-- <a [href]="user.url" target="_blank">
+        <img
+          src="https://cdn.iconscout.com/icon/free/png-256/linkedin-160-461814.png"
+          srcset="
+            https://cdn.iconscout.com/icon/free/png-512/linkedin-160-461814.png 2x
+          "
+          alt="Linkedin Icon"
+          width="40"
+          height="40"
+      /></a> -->
+      <table mat-table [dataSource]="user" class="mat-elevation-z8">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>LinkedIn</th>
+          <td mat-cell *matCellDef="let element">
+            <a [href]="user.url">Open</a>
+          </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element">Open</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef>Symbol</th>
+          <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
   </ng-container>
+  <ng-container *ngIf="showNoUser"> No users found :( </ng-container>
 </mat-card>
