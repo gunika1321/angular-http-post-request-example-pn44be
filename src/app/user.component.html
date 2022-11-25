@@ -9,11 +9,21 @@
   </div>
   <form class="flex" [formGroup]="addUserForm" (ngSubmit)="saveUser()">
     <mat-form-field style="width:400px;">
-      <input matInput placeholder="Email" formControlName="name" />
+      <input
+        matInput
+        placeholder="Email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        formControlName="name"
+      />
     </mat-form-field>
     <br />
     <mat-form-field style="width:400px;">
-      <input matInput placeholder="Phone Number" formControlName="phone" />
+      <input
+        matInput
+        placeholder="Phone Number"
+        pattern="^\+(?:[0-9]●?){1,10}(?:[0-9]●?){10}"
+        formControlName="phone"
+      />
     </mat-form-field>
     <br />
     <button [disabled]="!addUserForm.valid" mat-raised-button type="submit">
