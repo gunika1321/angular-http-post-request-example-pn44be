@@ -34,25 +34,10 @@
       </div>
       <div class="linked-in"></div>
       <div style="display:flex;flex-direction:column;">
-        <p
-          style="font-size: 34px;
-      font-family: sans-serif;
-      font-weight: lighter;
-      margin-left: 20px;
-      position: relative;
-      top: -6px;"
-        >
+        <p class="user-name">
           {{ user.name }}
         </p>
-        <p
-          style="font-size: 17px;
-          font-family: sans-serif;
-          font-weight: lighter;
-          margin: 0 !important;
-          margin-left: 20px !important;
-          position: relative;
-          top: -28px;"
-        >
+        <p class="user-headline">
           {{ user.headline }}
         </p>
       </div>
@@ -73,16 +58,9 @@
         View on LinkedIn
       </button> -->
     </div>
-    <div
-      style="display:flex;flex-direction:column;margin: auto;
-    width: 40%;"
-    >
+    <div class="common">
       <mat-card>
-        <div
-          style="display: flex;
-        flex-direction: row;
-        justify-content: space-between;"
-        >
+        <div class="display">
           <a
             style="text-decoration:none;color:#000;"
             [href]="companyProfile"
@@ -93,10 +71,7 @@
               alt="whois.com"
           /></a>
           <a
-            style="display: flex;
-          flex-direction: inherit;
-          justify-content: center;
-          align-items: center;"
+            class="link"
             [href]="companyProfile"
             target="_blank"
             mat-raised-button
@@ -105,11 +80,7 @@
         </div>
       </mat-card>
       <mat-card>
-        <div
-          style="display: flex;
-        flex-direction: row;
-        justify-content: space-between;"
-        >
+        <div class="display">
           <a
             style="text-decoration:none;color:#000;"
             [href]="twitterProfile"
@@ -123,10 +94,7 @@
               longdesc="https://twitter.com/iSidhuMooseWala"
           /></a>
           <a
-            style="display: flex;
-          flex-direction: inherit;
-          justify-content: center;
-          align-items: center;"
+            class="link"
             [href]="twitterProfile"
             target="_blank"
             mat-raised-button
@@ -135,11 +103,7 @@
         </div>
       </mat-card>
       <mat-card>
-        <div
-          style="display: flex;
-        flex-direction: row;
-        justify-content: space-between;"
-        >
+        <div class="display">
           <a style="text-decoration:none;color:#000;" [href]="mailLink"
             ><img
               class="gb_zc"
@@ -153,24 +117,13 @@
               role="presentation"
               style="width:109px;height:40px"
           /></a>
-          <a
-            style="display: flex;
-          flex-direction: inherit;
-          justify-content: center;
-          align-items: center;"
-            [href]="mailLink"
-            target="_blank"
-            mat-raised-button
+          <a class="link" [href]="mailLink" target="_blank" mat-raised-button
             >Go To</a
           >
         </div>
       </mat-card>
       <mat-card>
-        <div
-          style="display: flex;
-      flex-direction: row;
-      justify-content: space-between;"
-        >
+        <div class="display">
           <a
             style="text-decoration:none;color:#000;"
             [href]="crunchbaseProfile"
@@ -182,10 +135,7 @@
               alt="whois.com"
           /></a>
           <a
-            style="display: flex;
-        flex-direction: inherit;
-        justify-content: center;
-        align-items: center;"
+            class="link"
             [href]="crunchbaseProfile"
             target="_blank"
             mat-raised-button
@@ -207,11 +157,7 @@
     width: 40%;"
     >
       <mat-card>
-        <div
-          style="display: flex;
-        flex-direction: row;
-        justify-content: space-between;"
-        >
+        <div class="display">
           <a
             style="text-decoration:none;color:#000;"
             [href]="companyProfile"
@@ -222,10 +168,7 @@
               alt="whois.com"
           /></a>
           <a
-            style="display: flex;
-          flex-direction: inherit;
-          justify-content: center;
-          align-items: center;"
+            class="link"
             [href]="companyProfile"
             target="_blank"
             mat-raised-button
@@ -234,11 +177,7 @@
         </div>
       </mat-card>
       <mat-card>
-        <div
-          style="display: flex;
-        flex-direction: row;
-        justify-content: space-between;"
-        >
+        <div class="display">
           <a
             style="text-decoration:none;color:#000;"
             [href]="twitterProfile"
@@ -251,10 +190,7 @@
               alt="Twitter"
           /></a>
           <a
-            style="display: flex;
-          flex-direction: inherit;
-          justify-content: center;
-          align-items: center;"
+            class="link"
             [href]="twitterProfile"
             target="_blank"
             mat-raised-button
@@ -263,11 +199,7 @@
         </div>
       </mat-card>
       <mat-card>
-        <div
-          style="display: flex;
-        flex-direction: row;
-        justify-content: space-between;"
-        >
+        <div class="display">
           <a style="text-decoration:none;color:#000;" [href]="mailLink"
             ><img
               class="gb_zc"
@@ -281,24 +213,13 @@
               role="presentation"
               style="width:109px;height:40px"
           /></a>
-          <a
-            style="display: flex;
-          flex-direction: inherit;
-          justify-content: center;
-          align-items: center;"
-            [href]="mailLink"
-            target="_blank"
-            mat-raised-button
+          <a class="link" [href]="mailLink" target="_blank" mat-raised-button
             >Go To</a
           >
         </div>
       </mat-card>
       <mat-card>
-        <div
-          style="display: flex;
-    flex-direction: row;
-    justify-content: space-between;"
-        >
+        <div class="display">
           <a
             style="text-decoration:none;color:#000;"
             [href]="crunchbaseProfile"
@@ -310,10 +231,7 @@
               alt="whois.com"
           /></a>
           <a
-            style="display: flex;
-      flex-direction: inherit;
-      justify-content: center;
-      align-items: center;"
+            class="link"
             [href]="crunchbaseProfile"
             target="_blank"
             mat-raised-button
