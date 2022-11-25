@@ -21,8 +21,8 @@
     </button>
   </form>
 </mat-card>
-<mat-card>
-  <br />
+<br />
+<mat-card *ngIf="showResult">
   <ng-container *ngFor="let user of users">
     <div (click)="openLinkedIn(user)" class="main">
       <div style="margin-left:50px;">
@@ -41,30 +41,14 @@
           {{ user.headline }}
         </p>
       </div>
-      <!-- <button
-        style="position: relative;
-      cursor:pointer;
-      background-color: rgb(0, 120, 212);
-      border: 0px;
-      outline: none;
-      height: 31px;
-      color: #fff;
-      border-radius: 7%;
-      width: 132px;
-      right: 224px;
-    top: 100px;"
-        (click)="openLinkedIn(user)"
-      >
+      <!-- <button class="btn1" (click)="openLinkedIn(user)">
         View on LinkedIn
       </button> -->
     </div>
     <div class="common">
-      <mat-card>
+      <mat-card class="w-40">
         <div class="display">
-          <a
-            style="text-decoration:none;color:#000;"
-            [href]="companyProfile"
-            target="_blank"
+          <a class="href-decor" [href]="companyProfile" target="_blank"
             ><img
               height="40"
               src="https://www.whois.com/images/logo.gif"
@@ -79,12 +63,9 @@
           >
         </div>
       </mat-card>
-      <mat-card>
+      <mat-card class="w-40">
         <div class="display">
-          <a
-            style="text-decoration:none;color:#000;"
-            [href]="twitterProfile"
-            target="_blank"
+          <a class="href-decor" [href]="twitterProfile" target="_blank"
             ><img
               height="40"
               class="music-service-list__img"
@@ -102,9 +83,9 @@
           >
         </div>
       </mat-card>
-      <mat-card>
+      <mat-card class="w-40">
         <div class="display">
-          <a style="text-decoration:none;color:#000;" [href]="mailLink"
+          <a class="href-decor" [href]="mailLink"
             ><img
               class="gb_zc"
               src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_dark_1x_r5.png"
@@ -122,12 +103,9 @@
           >
         </div>
       </mat-card>
-      <mat-card>
+      <mat-card class="w-40">
         <div class="display">
-          <a
-            style="text-decoration:none;color:#000;"
-            [href]="crunchbaseProfile"
-            target="_blank"
+          <a class="href-decor" [href]="crunchbaseProfile" target="_blank"
             ><img
               height="32"
               style="background-color: #0f66ff;"
@@ -146,22 +124,13 @@
     </div>
   </ng-container>
   <ng-container *ngIf="showNoUser">
-    <p
-      style="display:flex;flex-direction:column;margin: auto;
-    width: 40%;color:#16449b;font-family:monospace;"
-    >
+    <p class="search-result" style="color:#16449b;font-family:monospace;">
       No LinkedIn profile found for this email
     </p>
-    <div
-      style="display:flex;flex-direction:column;margin: auto;
-    width: 40%;"
-    >
-      <mat-card>
+    <div class="search-result">
+      <mat-card class="w-40">
         <div class="display">
-          <a
-            style="text-decoration:none;color:#000;"
-            [href]="companyProfile"
-            target="_blank"
+          <a class="href-decor" [href]="companyProfile" target="_blank"
             ><img
               height="40"
               src="https://www.whois.com/images/logo.gif"
@@ -176,12 +145,9 @@
           >
         </div>
       </mat-card>
-      <mat-card>
+      <mat-card class="w-40">
         <div class="display">
-          <a
-            style="text-decoration:none;color:#000;"
-            [href]="twitterProfile"
-            target="_blank"
+          <a class="href-decor" [href]="twitterProfile" target="_blank"
             ><img
               height="40"
               class="music-service-list__img"
@@ -198,9 +164,9 @@
           >
         </div>
       </mat-card>
-      <mat-card>
+      <mat-card class="w-40">
         <div class="display">
-          <a style="text-decoration:none;color:#000;" [href]="mailLink"
+          <a class="href-decor" [href]="mailLink"
             ><img
               class="gb_zc"
               src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_dark_1x_r5.png"
@@ -218,12 +184,9 @@
           >
         </div>
       </mat-card>
-      <mat-card>
+      <mat-card class="w-40">
         <div class="display">
-          <a
-            style="text-decoration:none;color:#000;"
-            [href]="crunchbaseProfile"
-            target="_blank"
+          <a class="href-decor" [href]="crunchbaseProfile" target="_blank"
             ><img
               height="32"
               style="background-color: #0f66ff;"

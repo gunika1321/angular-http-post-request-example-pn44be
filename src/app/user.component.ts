@@ -17,6 +17,7 @@ export class UserComponent {
   whatsappLink: String = '';
   crunchbaseProfile: String = '';
   showNoUser: boolean = false;
+  showResult: boolean = false;
   usersTyped: UserInfo[] = [];
   displayedColumns: string[] = ['image', 'url'];
   addUserForm = new FormGroup({
@@ -27,6 +28,7 @@ export class UserComponent {
   constructor(public userService: UserService) {}
 
   saveUser() {
+    this.showResult = true;
     if (this.addUserForm.value.phone.length >= 10) {
       this.whatsappLink = `https://wa.me/${this.addUserForm.value.phone}`;
     } else {
@@ -42,7 +44,7 @@ export class UserComponent {
       'X-HostAppPlatform': 'Web',
       'X-LPCVersion': '1.20221113.4.1',
       authorization:
-        'Bearer EwA4A92CBAAUf4ol7B29dDSCjZbDaiOfPJRcm/AAAbzNVsZIexXJeKc5DhAoCyRKLgR+SnBUjMw+5ck7hCeNxI6LKiHkwDw07Gh42egVIiN5/oXMVuOqz2jvz4A5CGcLLcTUhyo9AQhFZrQxFPURNUOSj256UcdWUzFgLp45NPB31gr1BpSz+L7ORPLw5yvQb3spBcYxxPIlokX3ZbWG00Fxf96jE+5ERyh8H/re1Z6l4VMZtNtJ/6sn7b+XkkwUZbqF+Rq7n6bT3d9EFcbyI/e5fm62/iOtDRPrN7ZbRIi38Ms4F6d+QpMOKKxmG0SlrrrtwiWh0CW8JzWQd+gxlW1tc7gYGL25h0r+l82nYBowD4fmUPxFWmRlCThxOHoDZgAACLlcDvWXP3WgCAKgoIbS7ZtbrwMf14xDqS3NmBWg8KBhrYl7vHgZEFgV8nZXzCptkV/Cw8vfrkFxw+O8IFWGbJh/h5zOrjcqlV+73qZCMpX0s5frA4lA4r9l2FKF1+yZigewc6qxRT0F/Ak1CWtYPjSbV9cb/8J8v3sET4inz6VQD9d0jPmJRGZfhdAIW/FvfImblAvYcAPITnti+vXdWJygCIg1wwuPDupNp1WA2GX6sXCaIbZVavIR02XVIgj8y+VXVGZ2+n/fN5kQ2uGToh9twrGoPL0feQQY7PLwlAH1PYEpIHejtPcT0qlV16pdBeil/Gilpi1MMWmzcVW4uQnIj16YbH2MILeX7MJySPtpU+jo50pIydb9sfMGx29Bo/+rGTy7vEllU9ytW3HhljB06kC6crWg9yWGvp7i92wKllp44fUh8+txoyCe4el78woRkqN/FlTmUOmfUVgUgWqoJcxkGhmqIdpAavdu78OKwg9UKlKij9Rgn8+JSe/YjzPMOeN0NLXizHLUHeuE5C+kqaCCSZMRQvb/9hDC8GO6R4ZIExTYafB10oFWzXKcFwVGoXT8y16sqKx1/yi73elpmnXYVV7o5JCe7z3+P8R7bPBisIfUXXiIdICKbbvS3CrPDGh1GTBBH9QRb/nu0pH4uEXJ4iLcnezab+9nWpZIjK8a1e03Szm/HsKKtlFzfzHmSgI=',
+        'Bearer EwA4A92CBAAUf4ol7B29dDSCjZbDaiOfPJRcm/AAAR0IlQaeoBDJmfZrwDTpvo4kTsDSXedkVl8rR7MhieYoG5GEOs/8jatqSgNEMtn9tStXo9bBA7wrSp7NN9zRl2UP6S+PbrykF3XoAha6ISG3yH8+8rTCwLY6nWj3I8sqcOktJDft8uVuOetse9iMOAQEdY+13GAs8MRw5joxwYdn0L++took1nbzO8t2wSKw1NlgkcclMy0jtXJEvx0f6hMDMTUITh/yKIPHfn+MyUMGxDRJEqEoaX1I2rNHqLbjy0FhYaUf4fQaC2rEbLE4HbqvicaDRezkx7tX05Di4nse9eA1EO5GW0+UPOedjPeM07f75+0N5PQKv/sWdSZOoq8DZgAACPThN8CgSpqlCAKi5+OteudlVoUobMESCn1h3vsu30m1XTVWp2t5II14owDU+4rKyFON3sqgPQfTN7Lu62x0WASMO5U/vXIYK50XlxlV4UUMxufNJIfijEq6DHcJbdP1x02L3FjsBhIjkVJ0Kqfp2eTN+mWmQJnLZKsEGbSXKPJhp/gi++xUI3t03ZdRkYERjOaFsHbTDD/E4KiLhdTIPktZJBXEYh/7y6JzdeidTi0Pif6WkyUi65ykMXfgU+E8LYehyFuAnp4iGAJLrm6OVlV0Vw1Ehsizx1YO3WwsHTHdiiMaZTMl5baArDydxeVSVsLgV0kpzbcJ6Y0O0T1CReCQTh/ZJxqocaYdS5xJNnkBBRq77ofXdwA4RtPkZEL8dNj3qxF/cVsiPdpU4WpYW4ZIStqNpX5rKilRKt10c5FUnnLqtFxTJyM3pyt/cg0ISw03mbJK6grfe2u/Nk638mK9C6Joz94evmzhSoWI7C9X6JCWYN/aD/69duAatHpW78On0Xr5dn/PEXWmjf3ICuiwb5vl8k53lYp7oYEEZdpMU0dUGht/qwqeNe1xQNDTskMY/kvm5LyHLvEwdCBzjytS9pHbwa099D6n3SXYjLTs/iAtwyN47WLjMC2Qt/bMO271saN5Nv4WsZ180baKsf+XgDONOUg5znIdSnai/yUZoSt82KAFpruOcgS5vfEaDUo5SgI=',
       'X-HostAppCapabilities': '{\\"isLokiContactDataDisabled\\":false}',
     };
     if (this.user.name.length > 0) {

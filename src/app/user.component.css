@@ -84,8 +84,9 @@
 .common {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  width: 40%;
+  align-items: center;
+  /* margin: auto;
+  width: 40%; */
 }
 
 .link {
@@ -93,4 +94,46 @@
   flex-direction: inherit;
   justify-content: center;
   align-items: center;
+}
+
+.href-decor {
+  text-decoration: none;
+  color: #000;
+}
+
+.btn1 {
+  position: relative;
+  cursor: pointer;
+  background-color: rgb(0, 120, 212);
+  border: 0px;
+  outline: none;
+  height: 31px;
+  color: #fff;
+  border-radius: 7%;
+  width: 132px;
+  right: 224px;
+  top: 100px;
+}
+
+.search-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: auto;
+  width: 40%; */
+}
+.w-40 {
+  width: 40%;
+}
+
+@media (min-width: 200px) and (max-width: 1000px) {
+  .search-result {
+    width: 100% !important;
+  }
+  .common {
+    width: 100% !important;
+  }
+  .w-40 {
+    width: 100% !important;
+  }
 }
