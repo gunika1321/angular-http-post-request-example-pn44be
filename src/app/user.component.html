@@ -1,8 +1,12 @@
 <mat-card>
   <h2>Enter Email</h2>
   <form [formGroup]="addUserForm" (ngSubmit)="saveUser()">
-    <mat-form-field>
+    <mat-form-field style="width:400px;">
       <input matInput placeholder="Email" formControlName="name" />
+    </mat-form-field>
+    <br />
+    <mat-form-field style="width:400px;">
+      <input matInput placeholder="Phone Number" formControlName="phone" />
     </mat-form-field>
     <br />
     <button [disabled]="!addUserForm.valid" mat-raised-button type="submit">
@@ -87,6 +91,140 @@
     </div>
   </ng-container>
   <ng-container *ngIf="showNoUser">
-    <a [href]="">Who is Jungleworks</a>
+    <div
+      style="display:flex;flex-direction:column;margin: auto;
+    width: 40%;"
+    >
+      <mat-card>
+        <div
+          style="display: flex;
+        flex-direction: row;
+        justify-content: space-between;"
+        >
+          <a
+            style="text-decoration:none;color:#000;"
+            [href]="companyProfile"
+            target="_blank"
+            ><img
+              height="40"
+              src="https://www.whois.com/images/logo.gif"
+              alt="whois.com"
+          /></a>
+          <a
+            style="display: flex;
+          flex-direction: inherit;
+          justify-content: center;
+          align-items: center;"
+            [href]="companyProfile"
+            target="_blank"
+            mat-raised-button
+            >Go To</a
+          >
+        </div>
+      </mat-card>
+      <mat-card>
+        <div
+          style="display: flex;
+        flex-direction: row;
+        justify-content: space-between;"
+        >
+          <a
+            style="text-decoration:none;color:#000;"
+            [href]="twitterProfile"
+            target="_blank"
+            ><img
+              height="40"
+              class="music-service-list__img"
+              data-test="music-service-item-image"
+              src="https://services.linkfire.com/logo_twitter_onlight.svg"
+              alt="Twitter"
+              longdesc="https://twitter.com/iSidhuMooseWala"
+          /></a>
+          <a
+            style="display: flex;
+          flex-direction: inherit;
+          justify-content: center;
+          align-items: center;"
+            [href]="twitterProfile"
+            target="_blank"
+            mat-raised-button
+            >Go To</a
+          >
+        </div>
+      </mat-card>
+      <mat-card>
+        <div
+          style="display: flex;
+        flex-direction: row;
+        justify-content: space-between;"
+        >
+          <a style="text-decoration:none;color:#000;" [href]="mailLink"
+            ><img
+              class="gb_zc"
+              src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_dark_1x_r5.png"
+              srcset="
+                https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_dark_2x_r5.png 2x,
+                https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_dark_1x_r5.png 1x
+              "
+              alt=""
+              aria-hidden="true"
+              role="presentation"
+              style="width:109px;height:40px"
+          /></a>
+          <a
+            style="display: flex;
+          flex-direction: inherit;
+          justify-content: center;
+          align-items: center;"
+            [href]="mailLink"
+            target="_blank"
+            mat-raised-button
+            >Go To</a
+          >
+        </div>
+      </mat-card>
+    </div>
   </ng-container>
+  <mat-card
+    *ngIf="whatsappLink"
+    style="display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 522px;
+    height: 31px;
+    top: 0px;"
+  >
+    <div
+      style="display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      top: -4px;
+      position: absolute;
+      width: 525px;"
+    >
+      <a
+        style="text-decoration:none;color:#000;"
+        [href]="whatsappLink"
+        target="_blank"
+        ><img
+          height="70"
+          src="https://cdn2.downdetector.com/static/uploads/logo/WhatsApp-Emblem.png"
+          alt="whatsapp"
+      /></a>
+      <a
+        style="display: flex;
+        flex-direction: inherit;
+        justify-content: center;
+        align-items: center;
+        height: 41px;
+        position: absolute;
+        top: 15px;
+        right: 0px;"
+        [href]="whatsappLink"
+        target="_blank"
+        mat-raised-button
+        >Go To</a
+      >
+    </div></mat-card
+  >
 </mat-card>
